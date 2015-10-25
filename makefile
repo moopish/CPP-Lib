@@ -1,0 +1,32 @@
+define \n
+
+
+endef
+
+MAKER=$(foreach DIR,$(patsubst %makefile,%,$(wildcard */makefile)),make -f makefile -C $(DIR) ${\n})
+HEADERS=$(wildcard */*.h)
+
+build :
+	@echo "============================"
+	@echo " C++ Lib by Michael van Dyk "
+	@echo "   ---- Version 0.01 ----   "
+	@echo "============================\n"
+	@echo "Builing VDLib...\n"
+	@make -s libtest
+
+libtest : $(HEADERS) make_each obj/main.o 
+	@echo "Building test executable..."
+	gcc -o libtest obj/*.o
+	@echo "Done!\n"
+
+obj/main.o : main.cpp
+	@echo "Compiling main"
+	gcc -o obj/main.o -c main.cpp
+
+make_each :
+	$(MAKER)
+
+clean : 
+	@echo "Cleaning..."
+	rm obj/*.o libtest
+	@echo "Done!\n"
