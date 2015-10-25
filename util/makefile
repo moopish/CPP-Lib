@@ -1,9 +1,9 @@
-util : enter $(patsubst %.c,../objects/utl_%.o,$(wildcard *.c)) 
+util : enter $(patsubst %.c,../obj/utl_%.o,$(wildcard *.c)) 
 	@echo
 
 enter :
 	@echo "Util"
 
-../obj/utl_basic.o : basic.c util.h
-	@echo " -> basic compiled"
-	gcc -o ../objects/utl_basic.o -c basic.c
+../obj/utl_bit.o : bit.c util.h
+	@echo " -> bit compiled"
+	gcc -o ../obj/utl_bit.o -c bit.c
