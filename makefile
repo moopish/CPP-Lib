@@ -16,12 +16,12 @@ build :
 
 libtest : $(HEADERS) make_each obj/main.o 
 	@echo "Building test executable..."
-	gcc -o libtest obj/*.o
+	g++ -o libtest obj/*.o
 	@echo "Done!\n"
 
 obj/main.o : main.cpp
 	@echo "Compiling main"
-	gcc -o obj/main.o -c main.cpp
+	g++ -o obj/main.o -c main.cpp
 
 make_each :
 	$(MAKER)
