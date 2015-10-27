@@ -3,6 +3,7 @@ define \n
 
 endef
 
+SRC_DIRS=cont math util
 MAKER=$(foreach DIR,$(patsubst %makefile,%,$(wildcard */makefile)),make -f makefile -C $(DIR) ${\n})
 HEADERS=$(wildcard *.h)
 
@@ -28,10 +29,9 @@ make_each :
 
 add :
 	@echo "Adding to git..."
-	git add *.c
-	git add *.h
-	git add *.cpp
-	git add *makefile
+	$(foreach DIR,$(SRC_DIRS),git add $(DIR)/* ${\n})
+	git add makefile
+	git add main.cpp
 	@echo "Done!\n"
 
 commit :
