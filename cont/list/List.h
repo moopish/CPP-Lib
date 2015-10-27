@@ -13,6 +13,7 @@ class List
       virtual E* remove(int) = 0;
       virtual E* set(int, E*) = 0;
 
+      bool empty();
       virtual int size() = 0;
 };
 
@@ -21,5 +22,11 @@ List<E>::List() { }
 
 template< typename E >
 List<E>::~List() { }
+
+template< typename E >
+bool List<E>::empty()
+{
+   return (size() == 0);
+}
 
 #endif
