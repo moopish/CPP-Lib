@@ -1,9 +1,7 @@
 #ifndef MATH_H
 #define MATH_H
 
-namespace math
-{
-   bool prime(int);
-}
+int prime(int);
+int gen_primes(int, int**);
 
 #endif

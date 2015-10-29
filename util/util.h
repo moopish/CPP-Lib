@@ -7,8 +7,17 @@ typedef unsigned char uchar;
 typedef unsigned int   uint;
 typedef unsigned long ulong;
 
-uchar clrbit(uchar, int);
-uchar getbit(uchar, int);
-uchar setbit(uchar, int);
+inline uchar clrbit(uchar, int);
+inline uchar getbit(uchar, int);
+inline uchar setbit(uchar, int);
+
+struct _int_qll {
+   int value;
+   struct _int_qll* next;
+};
+
+struct _int_qll* _int_qll_init(int);
+struct _int_qll* _int_qll_add(struct _int_qll*, int);
+struct _int_qll* _int_qll_rem(struct _int_qll*);
 
 #endif
