@@ -11,6 +11,10 @@ inline uchar clrbit(uchar, int);
 inline uchar getbit(uchar, int);
 inline uchar setbit(uchar, int);
 
+inline uint i_clrbit(uint, int);
+inline uint i_getbit(uint, int);
+inline uint i_setbit(uint, int);
+
 struct _int_qll {
    int value;
    struct _int_qll* next;

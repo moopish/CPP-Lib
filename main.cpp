@@ -1,20 +1,12 @@
-#include "cont/list/ArrayList.h"
-#include "math/math.h"
+#include "big/bcint.h"
 
-#include <iostream>
-#include <cstdlib>
-
-int main(int argc, char** argv)
+int main()
 {
-   ArrayList<int> test;
-
-   for (int i=0; i<1000; ++i) {
-      test.add(rand() % (i + 1), new int(i));
-   }
-
-   while (!test.empty()) {
-      delete test.remove(rand() % test.size());
-   }
+   bigUInt test;
+   big_uint_init(&test, 1234);
+   
+   big_uint_phex(&test);
 
    return (0);
 }
+

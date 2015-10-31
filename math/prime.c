@@ -41,7 +41,7 @@ int gen_primes(int n, int** primes)
    
    for (i=2; i<n; ++i) {
       temp = i / 8;
-      if (getbit(checks[temp], i - temp * 8) {
+      if (getbit(checks[temp], i - temp * 8)) {
          ++count;
          tail;
       }

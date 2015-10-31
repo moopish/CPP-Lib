@@ -22,3 +22,24 @@ inline uchar setbit(uchar n, int b)
       return (n);
    return (n | (1<<b));
 }
+
+inline uint i_clrbit(uint n, int b) 
+{
+   if B_CHECK(b, uint)
+      return (n);
+   return (n & ~(1<<b));
+}
+
+inline uint i_getbit(uint n, int b)
+{
+   if B_CHECK(b, uint)
+      return (GET_BIT_FAIL);
+   return ((n>>b)&1);
+}
+
+inline uint i_setbit(uint n, int b)
+{
+   if B_CHECK(b, uint)
+      return (n);
+   return (n | (1<<b));
+}
