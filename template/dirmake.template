@@ -1,0 +1,7 @@
+DIRNAME : enter $(wildcard *.mkf)
+	@echo
+
+enter :
+	@echo "DIRNAME"
+
+

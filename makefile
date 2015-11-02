@@ -4,6 +4,8 @@ define \n
 endef
 
 SRC_DIRS=arr cont math util
+IGNORE_DIRS=obj/
+DIRS=$(filter-out $(IGNORE_DIRS),$(wildcard */))
 MAKER=$(foreach DIR,$(patsubst %makefile,%,$(wildcard */makefile)),make -f makefile -C $(DIR) ${\n})
 HEADERS=$(wildcard *.h)
 
@@ -29,7 +31,10 @@ make_each :
 
 add :
 	@echo "Adding to git..."
-	$(foreach DIR,$(SRC_DIRS),@git add $(DIR)/* ${\n})
+	$(foreach DIR,$(DIRS),@git add $(DIR)* ${\n})
+	@git add template/*
+	@git add lib.sh
+	@git add .gitignore
 	@git add makefile
 	@git add main.cpp
 	@echo "Done!\n"
