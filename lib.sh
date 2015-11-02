@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SCRIPTPATH=`pwd -P`
+BACKSLASH=\\
 
 if [ -z "$1" ]; then
    echo "usage"
@@ -15,7 +16,7 @@ elif [ "$1" = "push" ]; then
    make push
 
 elif [ "$1" = "commit" ]; then
-   make commit m="${@:2}"
+   make commit m="get\ working"
 
 elif [ "$1" = "dir" ]; then
    if [ -z "$2" ]; then
