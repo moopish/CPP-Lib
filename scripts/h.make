@@ -1,0 +1,3 @@
+FPATH/FILE.h : DEPENDS
+	touch FPATH/FILE.h
+

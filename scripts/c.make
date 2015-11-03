@@ -1,0 +1,3 @@
+FPATH/FILE.c : DEPENDS
+	gcc -o OUT/FILE.o -c FPATH/FILE.c 
+

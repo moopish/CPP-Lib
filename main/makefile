@@ -29,22 +29,6 @@ obj/main.o : main.cpp $(HEADERS)
 make_each :
 	$(MAKER)
 
-add :
-	@echo "Adding to git..."
-	$(foreach DIR,$(DIRS),@git add $(DIR)* ${\n})
-	@git add template/*
-	@git add lib.sh
-	@git add .gitignore
-	@git add makefile
-	@git add main.cpp
-	@echo "Done!\n"
-
-commit :
-	@git commit -m ${m}
-
-push :
-	@git push
-
 clean : 
 	@echo "Cleaning..."
 	rm obj/*.o libtest
