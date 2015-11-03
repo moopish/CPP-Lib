@@ -38,7 +38,14 @@ if [ $# -eq 4 ]; then
       ;;
    esac
 
-   sed -e s/FILE/$1/g -e s#FPATH#$2#g -e s/OUT/$3/g -e s/DEPENDS/"$DEPENDS"/g < $FORMAT > .${1}.dept
+   sed -e s#FILE#$1#g -e s#FPATH#$2#g -e s#OUT#$3#g -e s/DEPENDS/$(DEPENDS)/g < $FORMAT > .${1}.dept
+
+elif [ $# -eq 3 ]; then
+   $0 ${1##*/} ${1%/*} $2 $3
+
+elif [ $# -eq 2 ]; then
+   $0 ${1%.*} $2 ${1##*.}
+
 else
    echo Fail with $0 $@
 fi
