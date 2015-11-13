@@ -1,5 +1,5 @@
 #include "big/bcint.h"
-#include "util/bit.h"
+#include "util/util.h"
 #include "math/math.h"
 
 int main()
