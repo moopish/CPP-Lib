@@ -21,6 +21,9 @@ elif [ "$1" = "commit" ]; then
 elif [ "$1" = "make" ]; then
    make -s -f makefile -C main/
 
+elif [ "$1" = "clean" ]; then
+   make clean
+
 elif [ "$1" = "dir" ]; then
    if [ -z "$2" ]; then
       echo "error: Need a directory name"

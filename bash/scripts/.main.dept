@@ -1,3 +1,0 @@
-../main/main.c : 
-	gcc -o out/main.o -c ../main/main.c 
-

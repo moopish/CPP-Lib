@@ -1,3 +1,0 @@
-../main/util/bit.c.c : 
-	gcc -o out/bit.c.o -c ../main/util/bit.c.c 
-

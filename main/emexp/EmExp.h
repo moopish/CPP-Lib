@@ -15,7 +15,7 @@ enum EmExpType { BOOL, INT, NULL, EXP };
 
 class EmExp 
 {
-   private :
+//   private :
 
    public :
       virtual EmExp& eval() = 0;

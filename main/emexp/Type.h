@@ -8,7 +8,7 @@ class Type : public EmExp
 
    public : 
       virtual EmExp& eval();
-      virtual EmExpType evalTo();
+      virtual EmExpType evalTo() = 0;
 
 };
 
