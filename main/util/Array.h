@@ -1,32 +1,31 @@
 #ifndef MSVD_ARRAY_H
 #define MSVD_ARRAY_H
 
-#include "../util/sptr.h"
+#include "sptr.h"
 
-//TODO rm inlines
+//TODO add checks
 
 template< typename T >
 class Array
 {
-   friend SmartPointer<T>;
    private :
-      T* array;
+      T*  array;
       int len;
 
    public :
-      inline Array(int);
+      Array(int);
       Array(const Array<T>&);
       Array(int,T[]);
-      inline ~Array();
+      ~Array();
 
-      inline int length();
+      int length();
 
-      inline T& operator[](int i);
+      T& operator[](int i);
         
 };
 
 template< typename T >
-inline Array<T>::Array(int l)
+Array<T>::Array(int l)
 {
    array = new T[l];
    len = l;
@@ -49,20 +48,20 @@ Array<T>::Array(int l, T* arr) : Array<T>(l)
 }
 
 template< typename T >
-inline Array<T>::~Array()
+Array<T>::~Array()
 {
    delete [] array;
 }
 
 template< typename T >
-inline int Array<T>::length()
+int Array<T>::length()
 {
    return (len);
 }
 
 
 template< typename T >
-inline T& Array<T>::operator[](int i)
+T& Array<T>::operator[](int i)
 {
    return (array[i]);
 }

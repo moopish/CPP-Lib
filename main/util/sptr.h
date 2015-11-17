@@ -48,7 +48,7 @@ class SmartPointer
      * * * * * * * * * * */
       T& operator*();     // Deref
       T* operator->();    // Use member of data
-      T& operator[](int); // Subscript (allows for arrays)
+      //T& operator[](int); // Subscript (allows for arrays)
 
     /*
      * Relational Operators
@@ -93,7 +93,7 @@ void SmartPointer<T>::clear()
    if (count) {
       --(*count);
       if (*count == 0) {
-         delete data;
+         delete [] data;
          delete count;
          data = 0;
          count = 0;
@@ -165,11 +165,11 @@ T* SmartPointer<T>::operator->()
    return (data);
 }
 
-template< typename T >
-T& SmartPointer<T>::operator[](int index)
-{
-   return (data[index]);
-}
+//template< typename T >
+//T& SmartPointer<T>::operator[](int index)
+//{
+//   return (data[index]);
+//}
 
 template< typename T >
 bool SmartPointer<T>::operator==(const SmartPointer<T>& o)

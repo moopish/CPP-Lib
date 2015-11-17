@@ -1,4 +1,4 @@
-#include "arr/Array.h"
+#include "util/Array.h"
 
 #include "big/bcint.h"
 #include "util/util.h"
@@ -18,7 +18,7 @@ int main()
 {
    sptr< Array<int> > test(new Array<int>(5));
 
-   cout << test[0].length() << endl;
+   cout << test->length() << endl;
  
    return (0);  
 }
