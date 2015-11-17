@@ -14,30 +14,47 @@ template< typename T >
 class SmartPointer
 {
    private :
-      T*   data;
-      int* count;
+      T*   data;  // The address of the data
+      int* count; // The number of pointers to the address
 
    public :
+    /*
+     * Related to construction/destruction
+     * * * * * * * * * * * * * * * * * * * */
       SmartPointer();
       SmartPointer(const SmartPointer<T>&);
       SmartPointer(const T&);
       SmartPointer(T* const);
       ~SmartPointer();
 
+    /*
+     * Assignment and Unassignment
+     * * * * * * * * * * * * * * * */
       void assign(const SmartPointer<T>&);
       void assign(const T&);
       void assign(T* const);
       void clear();
 
-      inline SmartPointer<T>& operator=(const SmartPointer<T>&);
-      inline SmartPointer<T>& operator=(T* const);
-      inline SmartPointer<T>& operator=(const T&);
-      inline SmartPointer<T>& operator-();
+    /*
+     * Assignment/Unassignment Operators
+     * * * * * * * * * * * * * * * * * * */
+      SmartPointer<T>& operator=(const SmartPointer<T>&); // Assignment by another sptr
+      SmartPointer<T>& operator=(T* const);               // Assignment by data pointer
+      SmartPointer<T>& operator=(const T&);               // Assignment by data reference
+      SmartPointer<T>& operator-();                       // Clear operator
      
-      inline T& operator*();
+    /*
+     * Member Operators
+     * * * * * * * * * * */
+      T& operator*();     // Deref
+      T* operator->();    // Use member of data
+      T& operator[](int); // Subscript (allows for arrays)
 
-      inline bool operator==(const SmartPointer<T>&);
-      inline bool operator!=(const SmartPointer<T>&); 
+    /*
+     * Relational Operators
+     * * * * * * * * * * * * */
+      bool operator==(const SmartPointer<T>&); // Equivalence operator
+      bool operator!=(const SmartPointer<T>&); // Non-Equivalence operator
 };
 
 template< typename T >
@@ -78,7 +95,8 @@ void SmartPointer<T>::clear()
       if (*count == 0) {
          delete data;
          delete count;
-         data = count = 0;
+         data = 0;
+         count = 0;
       }
    }
 }
@@ -108,47 +126,59 @@ void SmartPointer<T>::assign(T* const o)
 }
 
 template< typename T >
-inline SmartPointer<T>& SmartPointer<T>::operator=(const SmartPointer<T>& o)
+SmartPointer<T>& SmartPointer<T>::operator=(const SmartPointer<T>& o)
 {
    assign(o);
    return (*this);
 }
 
 template< typename T >
-inline SmartPointer<T>& SmartPointer<T>::operator=(T* const o)
+SmartPointer<T>& SmartPointer<T>::operator=(T* const o)
 {
    assign(o);
    return (*this);
 }
 
 template< typename T >
-inline SmartPointer<T>& SmartPointer<T>::operator=(const T& o)
+SmartPointer<T>& SmartPointer<T>::operator=(const T& o)
 {
    assign(o);
    return (*this);
 }
 
 template< typename T >
-inline SmartPointer<T>& SmartPointer<T>::operator-()
+SmartPointer<T>& SmartPointer<T>::operator-()
 {
    clear();
    return (*this);
 }
 
 template< typename T >
-inline T& SmartPointer<T>::operator*()
+T& SmartPointer<T>::operator*()
 {
    return (*data);
 }
 
 template< typename T >
-inline bool SmartPointer<T>::operator==(const SmartPointer<T>& o)
+T* SmartPointer<T>::operator->()
+{
+   return (data);
+}
+
+template< typename T >
+T& SmartPointer<T>::operator[](int index)
+{
+   return (data[index]);
+}
+
+template< typename T >
+bool SmartPointer<T>::operator==(const SmartPointer<T>& o)
 {
    return (data == o.data);
 }
 
 template< typename T >     
-inline bool SmartPointer<T>::operator!=(const SmartPointer<T>& o)
+bool SmartPointer<T>::operator!=(const SmartPointer<T>& o)
 {
    return (!(*this == o));
 }  

@@ -8,13 +8,17 @@
 
 #include <iostream>
 
+using namespace std;
+
+struct int_temp {
+   int x;
+};
+
 int main()
 {
-   int i = 5;
-   sptr<int> a;
-   a.assign(i);
+   sptr< Array<int> > test(new Array<int>(5));
 
-   sptr<int> b(new int(7));
+   cout << test[0].length() << endl;
  
    return (0);  
 }

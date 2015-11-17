@@ -3,6 +3,8 @@
 
 #include "../util/sptr.h"
 
+//TODO rm inlines
+
 template< typename T >
 class Array
 {
